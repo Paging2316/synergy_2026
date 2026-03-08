@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE CONTENT OS | Strategische Analyse 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap');
+        
+        :root {
+            --primary: #3b82f6;
+            --accent: #6366f1;
+            --bg-dark: #020617;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: #f1f5f9;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .font-heading { font-family: 'Space Grotesk', sans-serif; }
+
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-mesh {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150%;
+            height: 600px;
+            background: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .nav-link.active {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .pricing-card-featured {
+            border: 1px solid rgba(96, 165, 250, 0.5);
+            background: linear-gradient(180deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
+        }
+
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body x-data="{ tab: 'market', scrolled: false }" @scroll.window="scrolled = (window.pageYOffset > 20)">
+
+    <div class="hero-mesh"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 transition-all duration-500" :class="scrolled ? 'bg-slate-950/80 backdrop-blur-md border-b border-white/5 py-4' : 'py-8'">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-2xl shadow-blue-500/40">
+                    <i data-lucide="zap" class="text-white w-6 h-6"></i>
+                </div>
+                <div class="leading-none">
+                    <span class="text-lg font-black tracking-tighter uppercase italic block">Synergy</span>
+                    <span class="text-[10px] font-bold text-blue-500 uppercase tracking-widest">Vienna 2026</span>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-2 bg-white/5 p-1.5 rounded-2xl border border-white/5">
+                <button @click="tab = 'market'" :class="tab === 'market' ? 'nav-link active' : 'text-slate-400 hover:text-white'" class="px-5 py-2 rounded-xl text-xs font-bold transition-all duration-300">MARKT</button>
+                <button @click="tab = 'strategy'" :class="tab === 'strategy' ? 'nav-link active' : 'text-slate-400 hover:text-white'" class="px-5 py-2 rounded-xl text-xs font-bold transition-all duration-300">STRATEGIE</button>
+                <button @click="tab = 'model'" :class="tab === 'model' ? 'nav-link active' : 'text-slate-400 hover:text-white'" class="px-5 py-2 rounded-xl text-xs font-bold transition-all duration-300">MODELL</button>
+                <button @click="tab = 'pricing'" :class="tab === 'pricing' ? 'nav-link active' : 'text-slate-400 hover:text-white'" class="px-5 py-2 rounded-xl text-xs font-bold transition-all duration-300">PACKAGES</button>
+            </div>
+
+            <button class="hidden lg:flex items-center space-x-2 bg-blue-600 hover:bg-blue-500 px-5 py-2.5 rounded-xl text-xs font-bold transition shadow-lg shadow-blue-600/20">
+                <span>DOKUMENT EXPORT</span>
+                <i data-lucide="download" class="w-4 h-4"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main class="pt-40 pb-20 px-6 max-w-7xl mx-auto">
+        
+        <!-- SECTION: MARKET ANALYSIS -->
+        <section x-show="tab === 'market'" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-10" x-transition:enter-end="opacity-100 translate-y-0" x-cloak>
+            <div class="grid lg:grid-cols-2 gap-16 items-center mb-24">
+                <div>
+                    <span class="inline-block px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-black uppercase tracking-[0.2em] mb-6">Status Quo Wien 2026</span>
+                    <h1 class="text-6xl md:text-8xl font-black leading-[0.9] mb-8">Echte Assets. <br><span class="gradient-text italic">Smarte Skalierung.</span></h1>
+                    <p class="text-slate-400 text-xl leading-relaxed max-w-lg">
+                        Der Wiener Markt ist gesättigt von austauschbaren Content-Agenturen. Wir positionieren uns als das einzige <span class="text-white font-bold">Marketing-Betriebssystem</span>, das High-End Produktion mit KI-Effizienz fusioniert.
+                    </p>
+                </div>
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-blue-500/10 blur-[100px] rounded-full"></div>
+                    <div class="glass-panel p-8 rounded-[2.5rem] relative z-10 animate-float">
+                        <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6">Wettbewerbs-Radar</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-4 bg-white/5 rounded-2xl border border-white/5">
+                                <span class="text-sm">Klassische Werbeagenturen</span>
+                                <span class="text-xs font-bold text-red-400 uppercase">Zu langsam</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-white/5 rounded-2xl border border-white/5">
+                                <span class="text-sm">Reine Performance Agenturen</span>
+                                <span class="text-xs font-bold text-amber-400 uppercase">Hässlich</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-blue-500/20 rounded-2xl border border-blue-500/30 shadow-lg shadow-blue-500/10">
+                                <span class="text-sm font-bold">SYNERGY (Wir)</span>
+                                <span class="text-xs font-bold text-blue-400 uppercase tracking-widest">Marktführer</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="glass-panel p-8 rounded-3xl group hover:border-blue-500/50 transition-all duration-500">
+                    <i data-lucide="alert-triangle" class="text-amber-500 w-8 h-8 mb-6"></i>
+                    <h4 class="text-lg font-bold mb-3">Pain Point: Content-Loch</h4>
+                    <p class="text-sm text-slate-400 leading-relaxed">Unternehmen in Wien scheitern nicht an Ideen, sondern an der Frequenz. Ein Shooting im Jahr reicht 2026 nicht mehr aus.</p>
+                </div>
+                <div class="glass-panel p-8 rounded-3xl group hover:border-blue-500/50 transition-all duration-500">
+                    <i data-lucide="eye-off" class="text-red-500 w-8 h-8 mb-6"></i>
+                    <h4 class="text-lg font-bold mb-3">KI-Glattheit</h4>
+                    <p class="text-sm text-slate-400 leading-relaxed">Reiner KI-Content wird ignoriert. Kunden sehnen sich nach echten Gesichtern (Stefan Joham Faktor) in digitaler Perfektion.</p>
+                </div>
+                <div class="glass-panel p-8 rounded-3xl group hover:border-blue-500/50 transition-all duration-500">
+                    <i data-lucide="trending-down" class="text-blue-500 w-8 h-8 mb-6"></i>
+                    <h4 class="text-lg font-bold mb-3">Ad-Ermüdung</h4>
+                    <p class="text-sm text-slate-400 leading-relaxed">Statische Ads konvertieren nicht mehr. Der Markt braucht dynamische Video-Assets, die täglich variieren.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: STRATEGY & DIFFERENTIATION -->
+        <section x-show="tab === 'strategy'" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-10" x-transition:enter-end="opacity-100 translate-y-0" x-cloak>
+            <div class="max-w-3xl mb-16">
+                <h2 class="text-5xl font-black mb-6">Die Differenzierungs-Matrix</h2>
+                <p class="text-slate-400 text-lg italic">Warum wir nicht vergleichbar sind.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="glass-panel p-10 rounded-[3rem] border-indigo-500/20 relative overflow-hidden">
+                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-indigo-500/10 blur-3xl"></div>
+                    <h3 class="text-2xl font-bold mb-8 flex items-center gap-3">
+                        <i data-lucide="shield-check" class="text-indigo-400"></i> Der Trust-Faktor
+                    </h3>
+                    <div class="space-y-6">
+                        <div>
+                            <span class="text-xs font-bold text-indigo-400 uppercase tracking-widest block mb-2">Stefan Joham Network</span>
+                            <p class="text-sm text-slate-300">Wir liefern nicht nur Content, wir liefern Relevanz. Durch Stefans Netzwerk organisieren wir Gesichter und Orte, die für andere unerreichbar sind.</p>
+                        </div>
+                        <div class="h-px bg-white/5 w-full"></div>
+                        <div>
+                            <span class="text-xs font-bold text-indigo-400 uppercase tracking-widest block mb-2">Photoangelo Aesthetics</span>
+                            <p class="text-sm text-slate-300">Visuelle Überlegenheit. Während andere "Social-Kameras" nutzen, produzieren wir auf High-End-Niveau, das Brands veredelt.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-10 rounded-[3rem] border-blue-500/20 relative overflow-hidden">
+                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-blue-500/10 blur-3xl"></div>
+                    <h3 class="text-2xl font-bold mb-8 flex items-center gap-3">
+                        <i data-lucide="cpu" class="text-blue-400"></i> Die AI-Engine
+                    </h3>
+                    <div class="space-y-6">
+                        <div>
+                            <span class="text-xs font-bold text-blue-400 uppercase tracking-widest block mb-2">Multi-Format Recycling</span>
+                            <p class="text-sm text-slate-300">Aus einem Vormittag Shooting machen wir 30 Reels, 50 Stills und 12 Ad-Varianten – automatisiert durch unsere internen KI-Workflows.</p>
+                        </div>
+                        <div class="h-px bg-white/5 w-full"></div>
+                        <div>
+                            <span class="text-xs font-bold text-blue-400 uppercase tracking-widest block mb-2">Performance Coupling</span>
+                            <p class="text-sm text-slate-300">Produktion ohne Daten ist Blindflug. Sportsedition koppelt die Creative-Erstellung direkt an die ROAS-Daten der letzten 24 Stunden.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: MODEL (THE PROCESS) -->
+        <section x-show="tab === 'model'" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-10" x-transition:enter-end="opacity-100 translate-y-0" x-cloak>
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-black mb-4">The Content Lifecycle</h2>
+                <p class="text-slate-400 max-w-xl mx-auto italic underline underline-offset-8 decoration-blue-500/40">Unser 3-Stufen-System für Wiener Hidden Champions.</p>
+            </div>
+
+            <div class="relative max-w-5xl mx-auto">
+                <div class="absolute top-1/2 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500/0 via-blue-500/40 to-blue-500/0 -translate-y-1/2 hidden md:block"></div>
+                
+                <div class="grid md:grid-cols-3 gap-12">
+                    <!-- Step 1 -->
+                    <div class="relative z-10 text-center">
+                        <div class="w-20 h-20 bg-blue-600 rounded-3xl mx-auto flex items-center justify-center shadow-2xl shadow-blue-600/40 mb-8 border border-white/20">
+                            <i data-lucide="camera" class="text-white w-10 h-10"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-4">1. Content Day</h4>
+                        <p class="text-sm text-slate-400 leading-relaxed">Massive Content-Produktion in Wien. Wir sammeln das Rohmaterial für 3 Monate in einem Termin.</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="relative z-10 text-center">
+                        <div class="w-20 h-20 bg-slate-800 rounded-3xl mx-auto flex items-center justify-center shadow-2xl shadow-black/40 mb-8 border border-white/10">
+                            <i data-lucide="refresh-cw" class="text-blue-400 w-10 h-10"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-4">2. AI Factory</h4>
+                        <p class="text-sm text-slate-400 leading-relaxed">KI-gestütztes Splitting, Voice-Cloning und Untertitelung. Wir skalieren Qualität zu Quantität.</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="relative z-10 text-center">
+                        <div class="w-20 h-20 bg-slate-900 rounded-3xl mx-auto flex items-center justify-center shadow-2xl shadow-black/40 mb-8 border border-white/10">
+                            <i data-lucide="bar-chart-3" class="text-emerald-400 w-10 h-10"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-4">3. ROI Engine</h4>
+                        <p class="text-sm text-slate-400 leading-relaxed">Gezielte Ausspielung und Optimierung. Wir steuern das Budget dorthin, wo der Content performt.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: PRICING PACKAGES -->
+        <section x-show="tab === 'pricing'" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-10" x-transition:enter-end="opacity-100 translate-y-0" x-cloak>
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black mb-4">Retainer-Architektur</h2>
+                <p class="text-slate-400 italic">Klare monatliche Investments für planbares Wachstum.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8 items-end">
+                <!-- Pack 1 -->
+                <div class="glass-panel p-8 rounded-[2rem] border-white/5">
+                    <div class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-6">Level 01: Baseline</div>
+                    <div class="text-4xl font-black mb-8">€ 1.850 <span class="text-sm font-normal text-slate-500">/mtl.</span></div>
+                    <ul class="space-y-4 mb-10 text-sm text-slate-400">
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500 w-4 h-4"></i> 1 Content Day / Quartal</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500 w-4 h-4"></i> Redaktionsplan (2 Kanäle)</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500 w-4 h-4"></i> AI-Adaptionen (Shorts)</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500 w-4 h-4"></i> Performance-Reporting</li>
+                    </ul>
+                    <button class="w-full py-4 rounded-2xl bg-white/5 border border-white/10 font-bold hover:bg-white/10 transition">Auswählen</button>
+                </div>
+
+                <!-- Pack 2 -->
+                <div class="glass-panel p-10 rounded-[2.5rem] pricing-card-featured relative scale-105 shadow-2xl shadow-blue-500/10">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[10px] font-black px-5 py-1.5 rounded-full uppercase tracking-widest">Growth Engine</div>
+                    <div class="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-6">Level 02: Scale</div>
+                    <div class="text-5xl font-black mb-8 italic italic">€ 3.600 <span class="text-sm font-normal text-slate-500">/mtl.</span></div>
+                    <ul class="space-y-4 mb-10 text-sm text-slate-200">
+                        <li class="flex items-center gap-3"><i data-lucide="zap" class="text-blue-400 w-4 h-4"></i> 1 Content Day / 2 Monate</li>
+                        <li class="flex items-center gap-3"><i data-lucide="zap" class="text-blue-400 w-4 h-4"></i> Full Ads-Management (Meta/Google)</li>
+                        <li class="flex items-center gap-3"><i data-lucide="zap" class="text-blue-400 w-4 h-4"></i> Stefan Joham Network Casting</li>
+                        <li class="flex items-center gap-3"><i data-lucide="zap" class="text-blue-400 w-4 h-4"></i> Monatliche Strategie-Session</li>
+                    </ul>
+                    <button class="w-full py-4 rounded-2xl bg-blue-600 font-bold hover:bg-blue-500 transition shadow-lg shadow-blue-600/30">Häufigste Wahl</button>
+                </div>
+
+                <!-- Pack 3 -->
+                <div class="glass-panel p-8 rounded-[2rem] border-white/5">
+                    <div class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-6">Level 03: Leader</div>
+                    <div class="text-4xl font-black mb-8">€ 6.900+ <span class="text-sm font-normal text-slate-500">/mtl.</span></div>
+                    <ul class="space-y-4 mb-10 text-sm text-slate-400">
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500 w-4 h-4"></i> Monatliche Content Days</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500 w-4 h-4"></i> High-End Filmproduktion</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500 w-4 h-4"></i> Externe Marketingleitung</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500 w-4 h-4"></i> PR & Society Integration</li>
+                    </ul>
+                    <button class="w-full py-4 rounded-2xl bg-white/5 border border-white/10 font-bold hover:bg-white/10 transition">Kontakt</button>
+                </div>
+            </div>
+            
+            <!-- Additional Options -->
+            <div class="mt-20 glass-panel p-8 rounded-3xl grid md:grid-cols-4 gap-8 text-center border-white/5">
+                <div>
+                    <p class="text-[10px] font-bold text-slate-500 uppercase mb-2">Setup Fee</p>
+                    <p class="text-xl font-bold">€ 2.500</p>
+                </div>
+                <div>
+                    <p class="text-[10px] font-bold text-slate-500 uppercase mb-2">Laufzeit</p>
+                    <p class="text-xl font-bold">6 Monate</p>
+                </div>
+                <div>
+                    <p class="text-[10px] font-bold text-slate-500 uppercase mb-2">Ads-Budget</p>
+                    <p class="text-xl font-bold">Kunde</p>
+                </div>
+                <div>
+                    <p class="text-[10px] font-bold text-slate-500 uppercase mb-2">Kündigung</p>
+                    <p class="text-xl font-bold">30 Tage</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 py-12 px-6 glass-panel mt-20">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 bg-blue-600/20 rounded-lg flex items-center justify-center border border-blue-500/20 text-blue-500">
+                    <i data-lucide="zap" class="w-4 h-4"></i>
+                </div>
+                <span class="text-sm font-black tracking-widest uppercase italic">The Synergy <span class="text-slate-500 font-normal">| Strategy 2026</span></span>
+            </div>
+            <div class="text-right">
+                <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Confidential Internal Document</p>
+                <p class="text-[10px] text-slate-600 mt-1 uppercase tracking-tighter italic">Joham x Photoangelo x Sportsedition</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+<script>
+(function () {
+  const PASSWORD = "strategie2026";
+  const STORAGE_KEY = "synergy_2026_access";
+
+  if (sessionStorage.getItem(STORAGE_KEY) === "granted") {
+    return;
+  }
+
+  document.documentElement.style.background = "#020617";
+
+  const overlay = document.createElement("div");
+  overlay.id = "password-overlay";
+  overlay.innerHTML = `
+    <div style="
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, #020617 0%, #0f172a 100%);
+      padding: 24px;
+      font-family: Arial, sans-serif;
+    ">
+      <div style="
+        width: 100%;
+        max-width: 420px;
+        background: rgba(15, 23, 42, 0.92);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 18px;
+        padding: 32px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+        color: white;
+      ">
+        <div style="
+          font-size: 12px;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: #93c5fd;
+          margin-bottom: 14px;
+        ">Geschützter Zugriff</div>
+
+        <h1 style="
+          margin: 0 0 10px 0;
+          font-size: 28px;
+          line-height: 1.15;
+        ">Synergy 2026</h1>
+
+        <p style="
+          margin: 0 0 22px 0;
+          color: #cbd5e1;
+          line-height: 1.5;
+          font-size: 15px;
+        ">
+          Bitte Passwort eingeben, um die Strategie-Seite zu öffnen.
+        </p>
+
+        <input
+          id="password-input"
+          type="password"
+          placeholder="Passwort"
+          style="
+            width: 100%;
+            box-sizing: border-box;
+            padding: 14px 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.06);
+            color: white;
+            outline: none;
+            font-size: 15px;
+          "
+        />
+
+        <button
+          id="password-button"
+          style="
+            width: 100%;
+            margin-top: 14px;
+            padding: 14px 16px;
+            border: 0;
+            border-radius: 12px;
+            background: #3b82f6;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+          "
+        >
+          Zugang öffnen
+        </button>
+
+        <p id="password-error" style="
+          display: none;
+          margin: 12px 0 0 0;
+          color: #fca5a5;
+          font-size: 14px;
+        ">
+          Falsches Passwort.
+        </p>
+      </div>
+    </div>
+  `;
+
+  function lockPage() {
+    document.body.style.overflow = "hidden";
+    Array.from(document.body.children).forEach((el) => {
+      if (el.id !== "password-overlay") {
+        el.style.display = "none";
+      }
+    });
+    document.body.prepend(overlay);
+  }
+
+  function unlockPage() {
+    sessionStorage.setItem(STORAGE_KEY, "granted");
+    overlay.remove();
+    Array.from(document.body.children).forEach((el) => {
+      el.style.display = "";
+    });
+    document.body.style.overflow = "";
+  }
+
+  function checkPassword() {
+    const input = document.getElementById("password-input");
+    const error = document.getElementById("password-error");
+
+    if (input.value === PASSWORD) {
+      unlockPage();
+    } else {
+      error.style.display = "block";
+      input.value = "";
+      input.focus();
+    }
+  }
+
+  lockPage();
+
+  setTimeout(() => {
+    const input = document.getElementById("password-input");
+    const button = document.getElementById("password-button");
+
+    input.focus();
+    button.addEventListener("click", checkPassword);
+    input.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") checkPassword();
+    });
+  }, 0);
+})();
+</script>
+</body>
+</html>
